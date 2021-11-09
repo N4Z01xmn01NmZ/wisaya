@@ -1,4 +1,5 @@
 #include <wisaya/core/logger.hpp>
+#include <wsyassert.hpp>
 
 #ifdef WSY_PLATFORM_WINDOWS
 

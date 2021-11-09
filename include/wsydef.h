@@ -1,10 +1,10 @@
-#pragma once
 #ifndef WSYDEF_H
 #define WSYDEF_H
 
+#pragma once
+
 /**
  * @brief Platform detection macros
- * 
  */
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
@@ -56,7 +56,6 @@
 
 /**
  * @brief DLL export macros
- * 
  */
 
 #ifdef WSY_DLL_EXPORT
@@ -72,5 +71,25 @@
         #define WSYAPI
     #endif
 #endif // WSY_DLL_EXPORT
+
+/**
+ * @brief Debug assertion macros
+ */
+
+#ifdef WSY_CONFIG_DEBUG
+    #ifdef _MSC_VER
+        #include <intrin.h>
+        #define WSY_DEBUGBREAK() __debugbreak()
+    #else
+        #define WSY_DEBUGBREAK() __builtin_trap()
+    #endif
+    #define WSY_ASSERT_ENABLE
+#else
+    #define WSY_DEBUGBREAK()
+#endif // WSY_CONFIG_DEBUG
+
+#define WSY_EXPAND_MACRO(x) x
+
+#define WSY_BV(x) (1 << x)
 
 #endif // WSYDEF_H

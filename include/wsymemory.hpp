@@ -1,3 +1,6 @@
+#ifndef WSYMEMORY_H
+#define WSYMEMORY_H
+
 #pragma once
 
 #include <memory>
@@ -5,17 +8,19 @@
 namespace Wisaya {
 
     template<typename T>
-    using scoped = std::unique_ptr<T>;
+    using unique_ptr = std::unique_ptr<T>;
     template<typename T, typename ... Args>
-    constexpr scoped<T> createScope(Args&& ... args) {
+    constexpr unique_ptr<T> makeUnique(Args&& ... args) {
         return std::make_unique<T>(std::forward<Args>(args)...);
     }
 
     template<typename T>
-    using reference = std::shared_ptr<T>;
+    using shared_ptr = std::shared_ptr<T>;
     template<typename T, typename ... Args>
-    constexpr reference<T> createRefs(Args&& ... args) {
+    constexpr shared_ptr<T> makeShared(Args&& ... args) {
         return std::make_shared<T>(std::forward<Args>(args)...);
     }
 
 } // namespace Wisaya
+
+#endif // WSYMEMORY_H

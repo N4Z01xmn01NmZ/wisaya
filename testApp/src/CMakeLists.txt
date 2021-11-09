@@ -9,6 +9,12 @@ target_sources(${CLIENT_NAME}
         "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp"
 )
 
+target_compile_definitions(${CLIENT_NAME}
+    PRIVATE
+        $<$<CONFIG:Debug>:WSY_CONFIG_DEBUG=1>
+        $<$<CONFIG:Release>:WSY_CONFIG_RELEASE=1>
+)
+
 #Add include paths.
 target_include_directories(${CLIENT_NAME}
     PRIVATE

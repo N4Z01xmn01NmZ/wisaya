@@ -16,11 +16,11 @@ namespace Wisaya {
         static void Initialize();
         static void Shutdown();
 
-        static reference<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
-        static reference<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
+        static shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
+        static shared_ptr<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
     private:
-        static reference<spdlog::logger> s_CoreLogger;
-        static reference<spdlog::logger> s_ClientLogger;
+        static shared_ptr<spdlog::logger> s_CoreLogger;
+        static shared_ptr<spdlog::logger> s_ClientLogger;
     };
 
 } // namespace Wisaya

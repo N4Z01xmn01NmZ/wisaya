@@ -1,4 +1,4 @@
-#include <wisaya/core/logger.hpp>
+#include "logger.hpp"
 
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
@@ -6,15 +6,15 @@
 
 namespace Wisaya {
 
-    reference<spdlog::logger> Logger::s_CoreLogger;
-    reference<spdlog::logger> Logger::s_ClientLogger;
+    shared_ptr<spdlog::logger> Logger::s_CoreLogger;
+    shared_ptr<spdlog::logger> Logger::s_ClientLogger;
 
     void Logger::Initialize() {
         std::vector<spdlog::sink_ptr> consoleSink;
-        consoleSink.emplace_back(createRefs<spdlog::sinks::stdout_color_sink_mt>());
+        consoleSink.emplace_back(makeShared<spdlog::sinks::stdout_color_sink_mt>());
         consoleSink[0]->set_pattern("%^[%T.%e] %n: %v%$");
         
-        s_CoreLogger = createRefs<spdlog::logger>(
+        s_CoreLogger = makeShared<spdlog::logger>(
             "WISAYA",
             std::begin(consoleSink),
             std::end(consoleSink)
@@ -23,7 +23,7 @@ namespace Wisaya {
         s_CoreLogger->flush_on(spdlog::level::trace);
         spdlog::register_logger(s_CoreLogger);
         
-        s_ClientLogger = createRefs<spdlog::logger>(
+        s_ClientLogger = makeShared<spdlog::logger>(
             "CLIENT",
             std::begin(consoleSink),
             std::end(consoleSink)

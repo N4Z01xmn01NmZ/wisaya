@@ -1,6 +1,7 @@
-#pragma once
 #ifndef WSYBASICTYPE_H
 #define WSYBASICTYPE_H
+
+#pragma once
 
 #include <stddef.h>
 #include <stdbool.h>
