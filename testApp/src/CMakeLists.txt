@@ -6,7 +6,7 @@ add_executable(${CLIENT_NAME})
 # Add source files.
 target_sources(${CLIENT_NAME}
     PRIVATE
-        "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/testApp.cpp"
 )
 
 target_compile_definitions(${CLIENT_NAME}

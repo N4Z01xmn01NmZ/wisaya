@@ -6,6 +6,8 @@
 #include "wsydef.h"
 
 #ifndef WSY_CONFIG_RELEASE
+    #include <wisaya/core/logger.hpp>
+    
     // ENGINE log macros
     #define WSY_CORE_TRACE(...)    ::Wisaya::Logger::GetCoreLogger()->trace(__VA_ARGS__)
     #define WSY_CORE_INFO(...)     ::Wisaya::Logger::GetCoreLogger()->info(__VA_ARGS__)

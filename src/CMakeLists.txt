@@ -5,11 +5,6 @@ add_library(${ENGINE_NAME} SHARED)
 
 # Add source files.
 add_subdirectory(wisaya)
-target_sources(${ENGINE_NAME}
-    PRIVATE
-        "${CMAKE_CURRENT_SOURCE_DIR}/test.c"
-        "${CMAKE_CURRENT_SOURCE_DIR}/test.h"
-)
 
 target_compile_definitions(${ENGINE_NAME}
     PRIVATE
