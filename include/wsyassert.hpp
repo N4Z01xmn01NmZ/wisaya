@@ -6,7 +6,7 @@
 #include <wsydef.hpp>
 
 #ifdef WSY_ASSERT_ENABLE
-    #include <wisaya/core/logger.hpp>
+    #include <wisaya/core/WAppLog.hpp>
 
     #define WSY_ASSERT_IMPL_REPORT(type, expr, fmt, ...) { if(expr) {} else { WSY##type##ERROR(fmt, __VA_ARGS__); WSY_DEBUGBREAK(); } }
 

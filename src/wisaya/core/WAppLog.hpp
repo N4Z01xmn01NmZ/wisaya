@@ -1,3 +1,6 @@
+#ifndef WAPPLOG_H
+#define WAPPLOG_H
+
 #pragma once
 
 #include <wsydef.hpp>
@@ -8,11 +11,11 @@
 
 namespace Wisaya {
 
-    class WSYAPI Logger
+    class WSYAPI WAppLog
     {
     public:
-        Logger() = default;
-        ~Logger() = default;
+        WAppLog() = default;
+        ~WAppLog() = default;
 
         static void Initialize();
         static void Shutdown();
@@ -25,3 +28,5 @@ namespace Wisaya {
     };
 
 } // namespace Wisaya
+
+#endif // WAPPLOG_H

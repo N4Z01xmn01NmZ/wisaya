@@ -1,8 +1,10 @@
 target_sources(${ENGINE_NAME}
     PRIVATE
-        "${CMAKE_CURRENT_SOURCE_DIR}/appdelegate.cpp"
-        "${CMAKE_CURRENT_SOURCE_DIR}/appdelegate.hpp"
-        "${CMAKE_CURRENT_SOURCE_DIR}/logger.cpp"
-        "${CMAKE_CURRENT_SOURCE_DIR}/logger.hpp"
-        "${CMAKE_CURRENT_SOURCE_DIR}/main.hpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/WAppDelegate.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/WAppDelegate.hpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/WAppLog.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/WAppLog.hpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/WAppMain.hpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/WAppWindow.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/WAppWindow.hpp"
 )

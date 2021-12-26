@@ -14,7 +14,7 @@ namespace Wisaya
     public:
         WisayaWindowCloseEvent() = default;
 
-        SYSTEM_EVENT_CODE(WINDOW_CLOSE)
+        SYSTEM_EVENT_CODE(WSY_WINDOW_CLOSE)
         SYSTEM_EVENT_CATEGORY(SECatApplication)
     };
 
@@ -34,7 +34,7 @@ namespace Wisaya
             return ss.str();
         }
 
-        SYSTEM_EVENT_CODE(WINDOW_RESIZE)
+        SYSTEM_EVENT_CODE(WSY_WINDOW_RESIZE)
         SYSTEM_EVENT_CATEGORY(SECatApplication)
     private:
         wsyUInt32 m_Width, m_Height;

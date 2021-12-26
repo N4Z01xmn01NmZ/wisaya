@@ -6,21 +6,21 @@
 #include <wsydef.hpp>
 
 #ifndef WSY_CONFIG_RELEASE
-    #include <wisaya/core/logger.hpp>
+    #include <wisaya/core/WAppLog.hpp>
     
     // ENGINE log macros
-    #define WSY_CORE_TRACE(...)    ::Wisaya::Logger::GetCoreLogger()->trace(__VA_ARGS__)
-    #define WSY_CORE_INFO(...)     ::Wisaya::Logger::GetCoreLogger()->info(__VA_ARGS__)
-    #define WSY_CORE_WARN(...)     ::Wisaya::Logger::GetCoreLogger()->warn(__VA_ARGS__)
-    #define WSY_CORE_ERROR(...)    ::Wisaya::Logger::GetCoreLogger()->error(__VA_ARGS__)
-    #define WSY_CORE_CRITICAL(...) ::Wisaya::Logger::GetCoreLogger()->critical(__VA_ARGS__)
+    #define WSY_CORE_TRACE(...)    ::Wisaya::WAppLog::GetCoreLogger()->trace(__VA_ARGS__)
+    #define WSY_CORE_INFO(...)     ::Wisaya::WAppLog::GetCoreLogger()->info(__VA_ARGS__)
+    #define WSY_CORE_WARN(...)     ::Wisaya::WAppLog::GetCoreLogger()->warn(__VA_ARGS__)
+    #define WSY_CORE_ERROR(...)    ::Wisaya::WAppLog::GetCoreLogger()->error(__VA_ARGS__)
+    #define WSY_CORE_CRITICAL(...) ::Wisaya::WAppLog::GetCoreLogger()->critical(__VA_ARGS__)
 
     // CLIENT log macros
-    #define WSY_TRACE(...)    ::Wisaya::Logger::GetClientLogger()->trace(__VA_ARGS__)
-    #define WSY_INFO(...)     ::Wisaya::Logger::GetClientLogger()->info(__VA_ARGS__)
-    #define WSY_WARN(...)     ::Wisaya::Logger::GetClientLogger()->warn(__VA_ARGS__)
-    #define WSY_ERROR(...)    ::Wisaya::Logger::GetClientLogger()->error(__VA_ARGS__)
-    #define WSY_CRITICAL(...) ::Wisaya::Logger::GetClientLogger()->critical(__VA_ARGS__)
+    #define WSY_TRACE(...)    ::Wisaya::WAppLog::GetClientLogger()->trace(__VA_ARGS__)
+    #define WSY_INFO(...)     ::Wisaya::WAppLog::GetClientLogger()->info(__VA_ARGS__)
+    #define WSY_WARN(...)     ::Wisaya::WAppLog::GetClientLogger()->warn(__VA_ARGS__)
+    #define WSY_ERROR(...)    ::Wisaya::WAppLog::GetClientLogger()->error(__VA_ARGS__)
+    #define WSY_CRITICAL(...) ::Wisaya::WAppLog::GetClientLogger()->critical(__VA_ARGS__)
 #else
     // ENGINE log macros
     #define WSY_CORE_TRACE(...)

@@ -1,28 +1,35 @@
+#ifndef WAPPMAIN_H
+#define WAPPMAIN_H
+
+#pragma once
+
 #include <wsydef.hpp>
 #include <wsylog.hpp>
 #include <wsyassert.hpp>
 
 #include <type/wsyBasicType.hpp>
 
-#include <wisaya/core/appdelegate.hpp>
+#include <wisaya/core/WAppDelegate.hpp>
 
 #ifdef WSY_PLATFORM_WINDOWS
 
-extern Wisaya::AppDelegate* Wisaya::ApplicationCreate();
+extern Wisaya::WAppDelegate* Wisaya::ApplicationCreate();
 
 int main(void) {
-    Wisaya::Logger::Initialize();
+    Wisaya::WAppLog::Initialize();
     WSY_CORE_INFO("Initialized Logger!");
 
-    Wisaya::AppDelegate* app = Wisaya::ApplicationCreate();
+    Wisaya::WAppDelegate* app = Wisaya::ApplicationCreate();
     if (app->Initialize() == WSY_FALSE) {
         WSY_CORE_CRITICAL("Failed to start application.");
         return 1;
     }
     app->Run();
 
-    Wisaya::Logger::Shutdown();
+    Wisaya::WAppLog::Shutdown();
     return 0;
 }
 
-#endif
+#endif // WSY_PLATFORM_WINDOWS
+
+#endif // WAPPMAIN_H

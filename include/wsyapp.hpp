@@ -9,6 +9,6 @@
 #include <wsylog.hpp>
 #include <wsyassert.hpp>
 
-#include <wisaya/core/appdelegate.hpp>
+#include <wisaya/core/WAppDelegate.hpp>
 
 #endif // WSYAPP_H

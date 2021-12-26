@@ -38,7 +38,7 @@ namespace Wisaya
             return ss.str();
         }
 
-        SYSTEM_EVENT_CODE(KEY_PRESSED);
+        SYSTEM_EVENT_CODE(WSY_KEY_PRESSED);
     private:
         wsyUInt16 m_RepeatCount;
     };
@@ -54,7 +54,7 @@ namespace Wisaya
             return ss.str();
         }
 
-        SYSTEM_EVENT_CODE(KEY_RELEASED);
+        SYSTEM_EVENT_CODE(WSY_KEY_RELEASED);
     };
 
     class WisayaKeyTypedEvent : public WisayaKeyEvent
@@ -68,7 +68,7 @@ namespace Wisaya
             return ss.str();
         }
 
-        SYSTEM_EVENT_CODE(KEY_TYPED);
+        SYSTEM_EVENT_CODE(WSY_KEY_TYPED);
     };
 
 } // namespace Wisaya

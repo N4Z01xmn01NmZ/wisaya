@@ -1,24 +1,26 @@
+#ifndef WAPPDELEGATE_H
+#define WAPPDELEGATE_H
+
 #pragma once
 
-#include <type/wsyBasicType.hpp>
-
 #include <wsydef.hpp>
+#include <type/wsyBasicType.hpp>
 
 int main(void);
 
 namespace Wisaya {
 
-    class WSYAPI AppDelegate
+    class WSYAPI WAppDelegate
     {
     public:
         // static AppDelegate& GetInstance() { return *s_Instance; }
-        static AppDelegate* GetInstance();
+        static WAppDelegate* GetInstance();
         static void ReleaseInstance();
 
-        AppDelegate(const AppDelegate&) = delete;
+        WAppDelegate(const WAppDelegate&) = delete;
     protected:
-        AppDelegate();
-        virtual ~AppDelegate();
+        WAppDelegate();
+        virtual ~WAppDelegate();
     private:
         wsyBool Initialize();
         void Shutdown();
@@ -28,10 +30,12 @@ namespace Wisaya {
         wsyBool m_Suspended;
     private:
         friend int ::main(void);
-        friend AppDelegate* ApplicationCreate();
-        static AppDelegate* s_Instance;
+        friend WAppDelegate* ApplicationCreate();
+        static WAppDelegate* s_Instance;
     };
 
-    extern AppDelegate* ApplicationCreate();
+    extern WAppDelegate* ApplicationCreate();
 
 } // namespace Wisaya
+
+#endif // WAPPDELEGATE_H

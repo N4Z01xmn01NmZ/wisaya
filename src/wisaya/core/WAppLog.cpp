@@ -1,4 +1,5 @@
-#include <wisaya/core/logger.hpp>
+#include <Wisaya_pch.hpp>
+#include <wisaya/core/WAppLog.hpp>
 
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
@@ -6,10 +7,10 @@
 
 namespace Wisaya {
 
-    shared_ptr<spdlog::logger> Logger::s_CoreLogger;
-    shared_ptr<spdlog::logger> Logger::s_ClientLogger;
+    shared_ptr<spdlog::logger> WAppLog::s_CoreLogger;
+    shared_ptr<spdlog::logger> WAppLog::s_ClientLogger;
 
-    void Logger::Initialize() {
+    void WAppLog::Initialize() {
         std::vector<spdlog::sink_ptr> consoleSink;
         consoleSink.emplace_back(makeShared<spdlog::sinks::stdout_color_sink_mt>());
         consoleSink[0]->set_pattern("%^[%T.%e] %n: %v%$");
@@ -33,7 +34,7 @@ namespace Wisaya {
         spdlog::register_logger(s_ClientLogger);
     }
 
-    void Logger::Shutdown() {
+    void WAppLog::Shutdown() {
         spdlog::shutdown();
     }
 

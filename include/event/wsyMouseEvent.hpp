@@ -28,7 +28,7 @@ namespace Wisaya
             return ss.str();
         }
 
-        EVENT_CLASS_TYPE(MOUSE_MOVED)
+        EVENT_CLASS_TYPE(WSY_MOUSE_MOVED)
         EVENT_CLASS_CATEGORY(SECatMouse | SECatInput)
     private:
         wsyFloat32 m_MouseX, m_MouseY;
@@ -50,7 +50,7 @@ namespace Wisaya
             return ss.str();
         }
 
-        EVENT_CLASS_TYPE(MOUSE_SCROLLED)
+        EVENT_CLASS_TYPE(WSY_MOUSE_SCROLLED)
         EVENT_CLASS_CATEGORY(SECatMouse | SECatInput)
     private:
         wsyFloat32 m_OffsetX, m_OffsetY;
@@ -82,7 +82,7 @@ namespace Wisaya
             return ss.str();
         }
 
-        EVENT_CLASS_TYPE(MOUSE_BUTTON_PRESSED)
+        EVENT_CLASS_TYPE(WSY_MOUSE_BUTTON_PRESSED)
     };
 
     class WisayaMouseButtonReleasedEvent : public WisayaMouseButtonEvent
@@ -98,7 +98,7 @@ namespace Wisaya
             return ss.str();
         }
 
-        EVENT_CLASS_TYPE(MOUSE_BUTTON_RELEASED)
+        EVENT_CLASS_TYPE(WSY_MOUSE_BUTTON_RELEASED)
     };
 
 } // namespace Wisaya
