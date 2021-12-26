@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "wsydef.h"
+#include <wsydef.hpp>
 
 #ifdef WSY_ASSERT_ENABLE
     #include <wisaya/core/logger.hpp>

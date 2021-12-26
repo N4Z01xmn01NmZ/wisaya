@@ -1,8 +1,8 @@
 #pragma once
 
-#include <type/wsyBasicType.h>
+#include <type/wsyBasicType.hpp>
 
-#include <wsydef.h>
+#include <wsydef.hpp>
 
 int main(void);
 
@@ -11,14 +11,16 @@ namespace Wisaya {
     class WSYAPI AppDelegate
     {
     public:
-        static AppDelegate& GetInstance() { return *s_Instance; }
+        // static AppDelegate& GetInstance() { return *s_Instance; }
+        static AppDelegate* GetInstance();
+        static void ReleaseInstance();
 
         AppDelegate(const AppDelegate&) = delete;
     protected:
         AppDelegate();
         virtual ~AppDelegate();
     private:
-        void Initialize();
+        wsyBool Initialize();
         void Shutdown();
         void Run();
     private:
@@ -30,6 +32,6 @@ namespace Wisaya {
         static AppDelegate* s_Instance;
     };
 
-    AppDelegate* ApplicationCreate(AppDelegate*&);
+    extern AppDelegate* ApplicationCreate();
 
 } // namespace Wisaya

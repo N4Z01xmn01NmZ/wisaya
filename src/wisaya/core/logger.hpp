@@ -1,9 +1,10 @@
 #pragma once
 
-#include <wsydef.h>
+#include <wsydef.hpp>
 #include <wsymemory.hpp>
 
 #include <spdlog/spdlog.h>
+#include <spdlog/fmt/ostr.h>
 
 namespace Wisaya {
 

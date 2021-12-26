@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "wsydef.h"
+#include <wsydef.hpp>
 
 #ifndef WSY_CONFIG_RELEASE
     #include <wisaya/core/logger.hpp>

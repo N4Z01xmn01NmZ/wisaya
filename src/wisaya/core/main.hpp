@@ -1,8 +1,8 @@
-#include <type/wsyBasicType.h>
-
-#include <wsydef.h>
+#include <wsydef.hpp>
 #include <wsylog.hpp>
 #include <wsyassert.hpp>
+
+#include <type/wsyBasicType.hpp>
 
 #include <wisaya/core/appdelegate.hpp>
 
@@ -15,8 +15,11 @@ int main(void) {
     WSY_CORE_INFO("Initialized Logger!");
 
     Wisaya::AppDelegate* app = Wisaya::ApplicationCreate();
+    if (app->Initialize() == WSY_FALSE) {
+        WSY_CORE_CRITICAL("Failed to start application.");
+        return 1;
+    }
     app->Run();
-    delete app;
 
     Wisaya::Logger::Shutdown();
     return 0;

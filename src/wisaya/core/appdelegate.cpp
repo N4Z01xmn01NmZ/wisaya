@@ -1,31 +1,38 @@
-#include "appdelegate.hpp"
+#include <wisaya/core/appdelegate.hpp>
 
 #include <wsylog.hpp>
 #include <wsyassert.hpp>
+
+#include <event/wsyApplicationEvent.hpp>
 
 namespace Wisaya {
 
     AppDelegate* AppDelegate::s_Instance = nullptr;
 
-    AppDelegate::AppDelegate() {
-        if (s_Instance) {
-            WSY_CORE_ERROR("ApplicationCreate called more than once.");
-            // throw std::logic_error("Application instance already exist.");
-            return;
-        }
-        
-        WSY_CORE_TRACE("Initializing application instance...");
+    AppDelegate* AppDelegate::GetInstance() {
+        return s_Instance;
+    }
+
+    void AppDelegate::ReleaseInstance() {
+        if (s_Instance != nullptr)
+            delete s_Instance;
+        s_Instance = nullptr;
+    }
+
+    AppDelegate::AppDelegate() {       
+        WSY_CORE_TRACE("Creating application instance...");
         s_Instance = this;
         m_Running = true;
         m_Suspended = false;
     }
 
     AppDelegate::~AppDelegate() {
-        Shutdown();
+        
     }
 
-    void AppDelegate::Initialize() {
-
+    wsyBool AppDelegate::Initialize() {
+        WSY_CORE_TRACE("Initializing application instance...");
+        return WSY_TRUE;
     }
 
     void AppDelegate::Shutdown() {
@@ -33,23 +40,13 @@ namespace Wisaya {
     }
 
     void AppDelegate::Run() {
-        // try {
-        //     /* code */
-        // }
-        // catch(const std::exception& e) {
-        //     WSY_CORE_CRITICAL();
-        //     // std::cerr << e.what() << '\n';
-        // }
-        
-        // if (!Initialize()) {
-        //     WSY_CORE_CRITICAL("Failed to start application.");
-        //     return;
-        // }
-
         // while (m_Running) {  
             
         // }
         WSY_CORE_INFO("Task executed succesfully!");
+
+        Shutdown();
+        AppDelegate::ReleaseInstance();
     }
 
 } // namespace Wisaya

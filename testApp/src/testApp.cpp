@@ -1,8 +1,8 @@
 #include <wsylog.hpp>
 #include <wsyassert.hpp>
 
-#include <wisaya/core/appdelegate.hpp>
-#include <wisaya/core/appentry.hpp>
+#include <wsyapp.hpp>
+#include <wisaya/core/main.hpp>
 
 class TestbedApp : public Wisaya::AppDelegate
 {

@@ -92,4 +92,7 @@
 
 #define WSY_BV(x) (1 << x)
 
+#define WSY_TRUE 1
+#define WSY_FALSE 0
+
 #endif // WSYDEF_H

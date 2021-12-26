@@ -3,7 +3,13 @@
 
 #pragma once
 
+#include <wsydef.hpp>
+
 #include <memory>
+#include <memory.h>
+
+// TODO Create alocator
+// FIXME test
 
 namespace Wisaya {
 
