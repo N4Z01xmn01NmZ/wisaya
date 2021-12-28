@@ -5,10 +5,10 @@
 
 #include <wsydef.hpp>
 
-#include <string>
+#include <type/wsyStringType.hpp>
 #include <functional>
 
-// #define WSY_BIND_EVENT_FN(fn) [this](auto&&... args) -> decltype(auto) { return this->fn(std::forward<decltype(args)>(args)...); }
+#define WSY_BIND_EVENT_FN(fn) [this](auto&&... args) -> decltype(auto) { return this->fn(std::forward<decltype(args)>(args)...); }
 
 namespace Wisaya {
 
@@ -34,7 +34,7 @@ namespace Wisaya {
 
     #define SYSTEM_EVENT_CODE(code) static SystemEventCode GetStaticCode() { return SystemEventCode::code; }\
                                     virtual SystemEventCode GetSECode() const override { return GetStaticCode(); }\
-                                    virtual const char* GetName() const override { return #code; }
+                                    virtual wsy_cstr GetName() const override { return #code; }
 
     class WisayaEvent {
     public:
@@ -48,8 +48,8 @@ namespace Wisaya {
         wsyBool SECategoryEquals(SystemEventCategory category) { return GetSECategoryFlags() & category; }
         wsyBool operator==(SystemEventCategory category) { return SECategoryEquals(category); }
 
-        virtual const char* GetName() const = 0;
-        virtual std::string ToString() const { return GetName(); }
+        virtual wsy_cstr GetName() const = 0;
+        virtual wsy_string ToString() const { return GetName(); }
 
         wsyBool isHandled = false;
     };
@@ -58,7 +58,7 @@ namespace Wisaya {
 
     };
 
-    std::ostream& operator<<(std::ostream& os, const WisayaEvent& evt) { return os << evt.ToString(); }
+    inline std::ostream& operator<<(std::ostream& os, const WisayaEvent& evt) { return os << evt.ToString(); }
 
 
 } // namespace Wisaya

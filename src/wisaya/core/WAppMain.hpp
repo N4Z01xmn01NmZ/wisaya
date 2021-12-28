@@ -22,12 +22,12 @@ int main(void) {
     Wisaya::WAppDelegate* app = Wisaya::ApplicationCreate();
     if (app->Initialize() == WSY_FALSE) {
         WSY_CORE_CRITICAL("Failed to start application.");
-        return 1;
+        return EXIT_FAILURE;
     }
     app->Run();
 
     Wisaya::WAppLog::Shutdown();
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 #endif // WSY_PLATFORM_WINDOWS

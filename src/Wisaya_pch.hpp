@@ -18,7 +18,13 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include <type/wsyBasicType.hpp>
+
 #include <wisaya/core/WAppLog.hpp>
+#include <wsylog.hpp>
+#include <wsyassert.hpp>
+
+#include <wsymemory.hpp>
 
 #ifdef WSY_PLATFORM_WINDOWS
     #include <Windows.h>

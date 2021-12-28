@@ -5,6 +5,9 @@
 
 #include <wsydef.hpp>
 #include <type/wsyBasicType.hpp>
+#include <event/WisayaEvent.hpp>
+
+#include <wisaya/core/WAppWindow.hpp>
 
 int main(void);
 
@@ -25,9 +28,13 @@ namespace Wisaya {
         wsyBool Initialize();
         void Shutdown();
         void Run();
+
+        void OnEvent(WisayaEvent& evt);
     private:
+        scoped_ptr<WAppWindow> m_Window;
         wsyBool m_Running;
         wsyBool m_Suspended;
+        wsyFloat64 m_LastFrameTime;
     private:
         friend int ::main(void);
         friend WAppDelegate* ApplicationCreate();

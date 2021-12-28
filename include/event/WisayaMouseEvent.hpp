@@ -3,11 +3,11 @@
 
 #pragma once
 
-#include <event/wsyEvent.hpp>
-#include <input/wsyMouseCode.hpp>
-#include <type/wsyBasicType.hpp>
+#include <event/WisayaEvent.hpp>
+#include <input/WisayaMouseCode.hpp>
 
-#include <sstream>
+#include <type/wsyBasicType.hpp>
+#include <type/wsyStringType.hpp>
 
 namespace Wisaya
 {
@@ -21,9 +21,9 @@ namespace Wisaya
         wsyFloat32 GetMouseX() const { return m_MouseX; }
         wsyFloat32 GetMouseY() const { return m_MouseY; }
 
-        std::string ToString() const override
+        wsy_string ToString() const override
         {
-            std::stringstream ss;
+            wsy_sstream ss;
             ss << "MouseMovedEvent: " << GetMouseX() << ", " << GetMouseY();
             return ss.str();
         }
@@ -43,9 +43,9 @@ namespace Wisaya
         wsyFloat32 GetOffsetX() const { return m_OffsetX; }
         wsyFloat32 GetOffsetY() const { return m_OffsetY; }
 
-        std::string ToString() const override
+        wsy_string ToString() const override
         {
-            std::stringstream ss;
+            wsy_sstream ss;
             ss << "MouseScrolledEvent: " << GetOffsetX() << ", " << GetOffsetY();
             return ss.str();
         }
@@ -75,9 +75,9 @@ namespace Wisaya
         WisayaMouseButtonPressedEvent(const wsyMouseCode button)
             : WisayaMouseButtonEvent(button) {}
 
-        std::string ToString() const override
+        wsy_string ToString() const override
         {
-            std::stringstream ss;
+            wsy_sstream ss;
             ss << "MouseButtonPressedEvent: " << m_Button;
             return ss.str();
         }
@@ -91,9 +91,9 @@ namespace Wisaya
         WisayaMouseButtonReleasedEvent(const wsyMouseCode button)
             : WisayaMouseButtonEvent(button) {}
 
-        std::string ToString() const override
+        wsy_string ToString() const override
         {
-            std::stringstream ss;
+            wsy_string ss;
             ss << "MouseButtonReleasedEvent: " << m_Button;
             return ss.str();
         }

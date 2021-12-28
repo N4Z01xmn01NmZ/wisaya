@@ -10,6 +10,7 @@ set(CLIENT_NAME "testApp")
 # Set directory path.
 set(VENDOR_PATH         ${CMAKE_SOURCE_DIR}/vendor)
 set(SPDLOG_PATH         ${VENDOR_PATH}/spdlog)
+set(GLFW_PATH           ${VENDOR_PATH}/glfw)
 set(ENGINE_INCLUDE_PATH ${CMAKE_SOURCE_DIR}/include)
 set(ENGINE_PATH         ${CMAKE_SOURCE_DIR}/src)
 set(CLIENT_PATH         ${CMAKE_SOURCE_DIR}/${CLIENT_NAME})
@@ -39,6 +40,13 @@ if(NOT CMAKE_ARCHIVE_OUTPUT_DIRECTORY)
     )
 endif()
 
+# Surpress GLEW and GLFW process.
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
+set(BUILD_UTILS OFF CACHE BOOL "" FORCE)
+
 # ---------------------------------------------------------------------------------------
 # Compiler config
 # ---------------------------------------------------------------------------------------
@@ -63,6 +71,9 @@ if(CMAKE_SYSTEM_NAME MATCHES "CYGWIN" OR CMAKE_SYSTEM_NAME MATCHES "MSYS")
     set(CMAKE_C_EXTENSIONS   ON)
     set(CMAKE_CXX_EXTENSIONS ON)
 endif()
+
+# Add GLEW ,GLFW.
+add_subdirectory(${GLFW_PATH})
 
 # Add vendors.
 add_subdirectory(${SPDLOG_PATH})

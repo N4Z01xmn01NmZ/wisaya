@@ -7,15 +7,15 @@
 
 namespace Wisaya {
 
-    shared_ptr<spdlog::logger> WAppLog::s_CoreLogger;
-    shared_ptr<spdlog::logger> WAppLog::s_ClientLogger;
+    reference_ptr<spdlog::logger> WAppLog::s_CoreLogger;
+    reference_ptr<spdlog::logger> WAppLog::s_ClientLogger;
 
     void WAppLog::Initialize() {
         std::vector<spdlog::sink_ptr> consoleSink;
-        consoleSink.emplace_back(makeShared<spdlog::sinks::stdout_color_sink_mt>());
+        consoleSink.emplace_back(create_reference<spdlog::sinks::stdout_color_sink_mt>());
         consoleSink[0]->set_pattern("%^[%T.%e] %n: %v%$");
         
-        s_CoreLogger = makeShared<spdlog::logger>(
+        s_CoreLogger = create_reference<spdlog::logger>(
             "WISAYA",
             std::begin(consoleSink),
             std::end(consoleSink)
@@ -24,7 +24,7 @@ namespace Wisaya {
         s_CoreLogger->flush_on(spdlog::level::trace);
         spdlog::register_logger(s_CoreLogger);
         
-        s_ClientLogger = makeShared<spdlog::logger>(
+        s_ClientLogger = create_reference<spdlog::logger>(
             "CLIENT",
             std::begin(consoleSink),
             std::end(consoleSink)

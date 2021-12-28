@@ -9,21 +9,20 @@
 #include <memory.h>
 
 // TODO Create alocator
-// FIXME test
 
 namespace Wisaya {
 
     template<typename T>
-    using unique_ptr = std::unique_ptr<T>;
+    using scoped_ptr = std::unique_ptr<T>;
     template<typename T, typename ... Args>
-    constexpr unique_ptr<T> makeUnique(Args&& ... args) {
+    constexpr scoped_ptr<T> create_scoped(Args&& ... args) {
         return std::make_unique<T>(std::forward<Args>(args)...);
     }
 
     template<typename T>
-    using shared_ptr = std::shared_ptr<T>;
+    using reference_ptr = std::shared_ptr<T>;
     template<typename T, typename ... Args>
-    constexpr shared_ptr<T> makeShared(Args&& ... args) {
+    constexpr reference_ptr<T> create_reference(Args&& ... args) {
         return std::make_shared<T>(std::forward<Args>(args)...);
     }
 

@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 3.16...3.21)
 add_library(${ENGINE_NAME} SHARED)
 
 # Add source files.
+add_subdirectory(platform)
 add_subdirectory(wisaya)
 
 target_compile_definitions(${ENGINE_NAME}
@@ -27,6 +28,7 @@ endif(CMAKE_VERSION VERSION_GREATER_EQUAL 3.16 AND KDV_BUILD_USING_PCH)
 target_include_directories(${ENGINE_NAME}
     PRIVATE
         ${SPDLOG_PATH}/include
+        $ENV{VULKAN_SDK}/Include
         ${ENGINE_INCLUDE_PATH}
         ${CMAKE_CURRENT_SOURCE_DIR}
 )
@@ -35,4 +37,5 @@ target_include_directories(${ENGINE_NAME}
 target_link_libraries(${ENGINE_NAME}
     PRIVATE
         spdlog
+        glfw
 )

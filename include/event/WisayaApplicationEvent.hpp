@@ -3,8 +3,10 @@
 
 #pragma once
 
-#include <event/wsyEvent.hpp>
+#include <event/WisayaEvent.hpp>
+
 #include <type/wsyBasicType.hpp>
+#include <type/wsyStringType.hpp>
 
 namespace Wisaya
 {
@@ -27,9 +29,9 @@ namespace Wisaya
         wsyUInt32 GetWidth() const { return m_Width; }
         wsyUInt32 GetHeight() const { return m_Height; }
 
-        std::string ToString() const override
+        wsy_string ToString() const override
         {
-            std::stringstream ss;
+            wsy_sstream ss;
             ss << "WindowResizeEvent: " << m_Width << ", " << m_Height;
             return ss.str();
         }

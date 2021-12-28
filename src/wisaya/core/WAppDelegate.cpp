@@ -1,10 +1,8 @@
 #include <Wisaya_pch.hpp>
 #include <wisaya/core/WAppDelegate.hpp>
 
-#include <wsylog.hpp>
-#include <wsyassert.hpp>
-
-#include <event/wsyApplicationEvent.hpp>
+#include <wsyclock.hpp>
+#include <event/WisayaApplicationEvent.hpp>
 
 namespace Wisaya {
 
@@ -25,6 +23,9 @@ namespace Wisaya {
         s_Instance = this;
         m_Running = true;
         m_Suspended = false;
+        m_LastFrameTime = 0.0f;
+
+        m_Window = nullptr;
     }
 
     WAppDelegate::~WAppDelegate() {
@@ -33,6 +34,11 @@ namespace Wisaya {
 
     wsyBool WAppDelegate::Initialize() {
         WSY_CORE_TRACE("Initializing application instance...");
+
+        m_Window = wsyCreateWindow();
+        if (m_Window->Initialize() == WSY_FALSE)
+            return WSY_FALSE;
+
         return WSY_TRUE;
     }
 
@@ -41,13 +47,21 @@ namespace Wisaya {
     }
 
     void WAppDelegate::Run() {
-        // while (m_Running) {  
-            
-        // }
+        while (m_Running) {
+            wsyFloat64 currentTime = m_Window->GetTimeMillis();
+            wsyFloat64 deltaTime = currentTime - m_LastFrameTime;
+            m_LastFrameTime = currentTime;
+            WSY_CORE_TRACE("{0}", deltaTime);
+            m_Window->OnUpdate();
+        }
         WSY_CORE_INFO("Task executed succesfully!");
 
         Shutdown();
         WAppDelegate::ReleaseInstance();
+    }
+
+    void WAppDelegate::OnEvent(WisayaEvent& evt) {
+        
     }
 
 } // namespace Wisaya
